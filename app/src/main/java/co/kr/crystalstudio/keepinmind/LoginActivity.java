@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login,btn_register;
+    private CheckBox cb_save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         et_pass=findViewById(R.id.et_pass);
         btn_login=findViewById(R.id.btn_login);
         btn_register=findViewById(R.id.btn_register);
+        cb_save=findViewById(R.id.cb_save);
 
         btn_register.setOnClickListener(new View.OnClickListener() {//회원가입 버튼을 클릭시 수행
             @Override
@@ -63,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("userPass",userPass);
                                 intent.putExtra("log", "User");
                                 startActivity(intent);
+                                finish();
                             }
 
 
@@ -80,9 +84,30 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue queue= Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
 
-                SaveSharedPreferences.setUserName(LoginActivity.this, et_id.getText().toString());
+                if (cb_save.isChecked()) {
+                    SaveSharedPreferences.setUserName(LoginActivity.this, et_id.getText().toString());
+                    SaveSharedPreferences.setLoginSaved(LoginActivity.this, true);
+
+                }
+                else{
+                    SaveSharedPreferences.setUserName(LoginActivity.this, "");
+                    SaveSharedPreferences.setLoginSaved(LoginActivity.this,false);
+                }
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+//        저장된 데이터 불러오기
+        String userName = SaveSharedPreferences.getUserName(this);
+        et_id.setText(userName);
+
+        boolean LoginSaved = SaveSharedPreferences.getLoginSaved(this);
+        cb_save.setChecked(LoginSaved);
+
     }
 }

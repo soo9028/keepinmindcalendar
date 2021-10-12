@@ -13,30 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeepInMind"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:theme="@style/SplashTheme"
-            android:name=".LoginActivity">
-
-
-
-
+            android:name=".SplashActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".EventEditActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".EventEditActivity"/>
         <activity android:name=".WeekViewActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
-
-
-
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

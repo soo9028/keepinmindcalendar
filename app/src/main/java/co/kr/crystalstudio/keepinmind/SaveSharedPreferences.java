@@ -27,6 +27,18 @@ public class SaveSharedPreferences {
         return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
     }
 
+    // 로그인 체크상태 저장하기
+    public static void setLoginSaved(Context ctx, boolean isChecked){
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.putBoolean("LoginChecked", isChecked);
+        editor.commit();
+    }
+
+    // 로그인 체크상태 가져오기
+    public static boolean getLoginSaved(Context ctx){
+        return getSharedPreferences(ctx).getBoolean("LoginChecked", false);
+    }
+
     // 로그아웃
     public static void clearUserName(Context ctx) {
         SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
