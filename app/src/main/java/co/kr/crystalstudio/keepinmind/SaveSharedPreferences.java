@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 public class SaveSharedPreferences {
 
     static final String PREF_USER_NAME = "username";
+    static final String PREF_USER_PASSWORD = "password";
 
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -37,6 +38,18 @@ public class SaveSharedPreferences {
     // 로그인 체크상태 가져오기
     public static boolean getLoginSaved(Context ctx){
         return getSharedPreferences(ctx).getBoolean("LoginChecked", false);
+    }
+
+    //계정 비밀번호 저장
+    public static void setUserPassword(Context ctx, String userPassword){
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.putString(PREF_USER_PASSWORD, userPassword);
+        editor.commit();
+    }
+
+    //계정 비밀번호 가져오기
+    public static String getUserPassword(Context ctx){
+        return getSharedPreferences(ctx).getString(PREF_USER_PASSWORD,"");
     }
 
     // 로그아웃

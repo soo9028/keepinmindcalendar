@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+
+//        getSupportActionBar().setSubtitle(Global.userID);
+        Toast.makeText(this, Global.userID+"님 환영합니다!", Toast.LENGTH_SHORT).show();
     }
 
     private void initWidgets()
