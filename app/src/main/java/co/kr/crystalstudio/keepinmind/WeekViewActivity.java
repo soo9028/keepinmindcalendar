@@ -90,4 +90,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         startActivity(new Intent(this, EventEditActivity.class));
     }
+
+    public void monthlyAction(View view) {finish();}
+
 }

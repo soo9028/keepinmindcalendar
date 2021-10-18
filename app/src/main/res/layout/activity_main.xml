@@ -8,17 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Weekly"
-        android:fontFamily="@font/nexongothicregular"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:background="@drawable/button"
-        android:onClick="weeklyAction"
-        android:textSize="20sp"/>
+
 
 
     <LinearLayout
@@ -151,7 +141,20 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="470dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Weekly"
+        android:fontFamily="@font/nexongothicregular"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:background="@drawable/button"
+        android:onClick="weeklyAction"
+        android:layout_margin="10dp"
+        android:textSize="20sp"/>
 
 </LinearLayout>
 
