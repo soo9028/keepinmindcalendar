@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -24,8 +23,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
-    ArrayList<Item> items = new ArrayList<>();
-    CalendarAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

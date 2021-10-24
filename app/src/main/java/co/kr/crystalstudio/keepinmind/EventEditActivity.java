@@ -52,39 +52,7 @@ public class EventEditActivity extends AppCompatActivity
         finish();
     }
 
-   //***일정 작성 및 서버에 저장 메소드***
 
-    public void serverSave(View view){
-        String userID = Global.userID;
-        String eventName = eventNameET.getText().toString();
-
-        //1.Retrofit 객체 생성
-        Retrofit.Builder builder = new Retrofit.Builder();
-        builder.baseUrl("http://soo9028.dothome.co.kr");
-        builder.addConverterFactory(ScalarsConverterFactory.create());
-        Retrofit retrofit = builder.build();
-
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-
-        Call<String> call = retrofitService.saveDataToServer(userID,eventName);
-
-        //실제 네트워크 작업 시작
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-               //응답된 글씨
-               String data = response.body();
-                Toast.makeText(EventEditActivity.this, "일정 저장됨", Toast.LENGTH_SHORT).show();
-                finish();
-
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(EventEditActivity.this, "일정 저장 실패: 서버 에러", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
-}
