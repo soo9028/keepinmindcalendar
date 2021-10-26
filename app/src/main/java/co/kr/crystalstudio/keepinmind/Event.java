@@ -22,7 +22,7 @@ public class Event
     }
 
 
-    private String name;
+    private String name; //일정 제목
     private LocalDate date;
 //    private LocalTime time;
 
@@ -49,10 +49,10 @@ public class Event
         return date;
     }
 
-//    public void setDate(LocalDate date)
-//    {
-//        this.date = date;
-//    }
+    public void setDate(LocalDate date)
+    {
+        this.date = date;
+    }
 
 //    public LocalTime getTime()
 //    {

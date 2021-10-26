@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import retrofit2.Call;
@@ -49,10 +50,34 @@ public class EventEditActivity extends AppCompatActivity
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate);
 //        ,time 뺐음
         Event.eventsList.add(newEvent);
+
+        saveEventData(eventName, CalendarUtils.selectedDate);
+
         finish();
     }
 
+    void saveEventData(String eventName, LocalDate selectedDate){
+        Retrofit.Builder builder = new Retrofit.Builder();
+        builder.baseUrl("http://soo9028.dothome.co.kr");
+        builder.addConverterFactory(ScalarsConverterFactory.create());
+        Retrofit retrofit = builder.build();
 
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+        Call<String> call= retrofitService.saveDataToServer(Global.userID, eventName, selectedDate.toString());
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(EventEditActivity.this, ""+response.body(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(EventEditActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 
     }
 
