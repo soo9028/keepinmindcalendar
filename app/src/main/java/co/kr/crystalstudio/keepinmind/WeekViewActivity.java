@@ -34,6 +34,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
     EventAdapter eventAdapter;
+    ArrayList<Event> dailyEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -87,8 +88,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onResume()
     {
         super.onResume();
-        loadData();
         setEventAdpater();
+        loadData();
     }
 
     void loadData(){
@@ -114,7 +115,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                    int day = Integer.parseInt(date[2]);
 
                    String eventName = item.eventName;
-                   Event event = new Event(eventName, LocalDate.of(year, month, day));
+                   Event event = new Event(eventName, LocalDate.of(year, month, day), item.no + "");
                    Event.eventsList.add(event);
                    eventAdapter.notifyDataSetChanged();
                }
@@ -128,11 +129,63 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     }
 
+    void deleteData(String no, int position){
+        Retrofit.Builder builder = new Retrofit.Builder();
+        builder.baseUrl("http://soo9028.dothome.co.kr");
+        builder.addConverterFactory(ScalarsConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+
+        Call<String> call= retrofitService.deleteDataFromServer(no);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+              String res = response.body();
+                dailyEvents.remove(position);
+                eventAdapter.notifyDataSetChanged();
+                Toast.makeText(WeekViewActivity.this, ""+res, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(WeekViewActivity.this, "실패 서버에러", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
     private void setEventAdpater()
     {
-        final ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
         eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
+
+
+        eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(WeekViewActivity.this);
+                builder.setMessage("수정하시겠습니까?");
+                builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String no = dailyEvents.get(position).getNo();
+                        String eventName = dailyEvents.get(position).getName();
+
+                        Intent intent = new Intent(WeekViewActivity.this, EventEditActivity.class);
+                        intent.putExtra("no",no);
+                        intent.putExtra("eventName",eventName);
+                        startActivity(intent);
+                    }
+                });
+
+                builder.setNegativeButton("아니오",null);
+                builder.create().show();
+
+            }
+
+        });
         eventListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -141,8 +194,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                 builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dailyEvents.remove(position);
-                        eventAdapter.notifyDataSetChanged();
+                       String no = dailyEvents.get(position).getNo();
+                        deleteData(no,position);
                     }
                 });
 
@@ -153,7 +206,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
             }
         });
     }
-
 
 
     public void newEventAction(View view)

@@ -22,6 +22,15 @@ public interface RetrofitService {
     @GET("/AndroidAppCalendar/eventLoadDB.php")
     Call<ArrayList<Item>> loadDataFromServer(@Query("userID") String userID);
 
+    //서버에 저장된 데이터를 삭제하는 기능메소드
+    @GET("/AndroidAppCalendar/eventDeleteDB.php")
+    Call<String> deleteDataFromServer(@Query("no") String no);
+
+    //서버에 저장된 데이터를 수정하는 기능메소드
+    @FormUrlEncoded
+    @POST("/AndroidAppCalendar/eventEditDB.php")
+    Call<String> editDataToServer(@Field("no") String no, @Field("eventName") String eventName);
+
 
 
 }

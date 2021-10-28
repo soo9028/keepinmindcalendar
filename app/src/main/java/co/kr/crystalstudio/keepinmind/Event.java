@@ -24,13 +24,16 @@ public class Event
 
     private String name; //일정 제목
     private LocalDate date;
+    private String no;
 //    private LocalTime time;
 
-    public Event(String name, LocalDate date)
+    public Event(String name, LocalDate date, String no)
 //  LocalTime time값 없앰
     {
         this.name = name;
         this.date = date;
+        this.no = no;
+
 //        this.time = time;
     }
 
@@ -54,7 +57,15 @@ public class Event
         this.date = date;
     }
 
-//    public LocalTime getTime()
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    //    public LocalTime getTime()
 //    {
 //        return time;
 //    }
