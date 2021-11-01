@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInMonthArray;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInWeekArray;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.monthYearFromDate;
+import static co.kr.crystalstudio.keepinmind.CalendarUtils.selectedDate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,8 +89,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onResume()
     {
         super.onResume();
-        setEventAdpater();
         loadData();
+        Global.activityNum = 1;
     }
 
     void loadData(){
@@ -117,8 +118,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                    String eventName = item.eventName;
                    Event event = new Event(eventName, LocalDate.of(year, month, day), item.no + "");
                    Event.eventsList.add(event);
-                   eventAdapter.notifyDataSetChanged();
                }
+               setEventAdpater();
+                setWeekView();
             }
 
             @Override

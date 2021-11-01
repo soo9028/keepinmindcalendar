@@ -1,9 +1,11 @@
 package co.kr.crystalstudio.keepinmind;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,14 +43,28 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
     {
         final LocalDate date = days.get(position);
-        if(date == null)
+
+
+        if(date == null) {
             holder.dayOfMonth.setText("");
-        else
+            holder.tv_eventCell.setVisibility(View.GONE);
+        }else
         {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
             if(date.equals(CalendarUtils.selectedDate))
                 holder.parentView.setBackgroundColor(Color.LTGRAY);
+
+            ArrayList<Event> events = Event.eventsForDate(date);
+
+            StringBuffer buffer = new StringBuffer();
+            for(Event event:events){
+                String name=event.getName();
+                buffer.append(name+"\n");
+            }
+
+            holder.tv_eventCell.setText(buffer.toString());
         }
+
     }
 
     @Override
