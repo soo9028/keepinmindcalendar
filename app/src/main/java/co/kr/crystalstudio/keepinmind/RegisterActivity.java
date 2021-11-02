@@ -66,7 +66,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 dialog.show();
                                 et_id.setEnabled(false); //아이디값 고정
                                 validate = true; //검증 완료
-                                validateButton.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                                validateButton.setBackgroundColor(getResources().getColor(R.color.black));
+                                validateButton.setTextColor(getResources().getColor(R.color.white));
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);

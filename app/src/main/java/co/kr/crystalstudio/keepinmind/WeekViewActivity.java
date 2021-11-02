@@ -22,6 +22,8 @@ import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInWeekArray;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.monthYearFromDate;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.selectedDate;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +38,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private ListView eventListView;
     EventAdapter eventAdapter;
     ArrayList<Event> dailyEvents;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -91,6 +94,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         super.onResume();
         loadData();
         Global.activityNum = 1;
+        findViewById(R.id.btn_weekview).setBackgroundColor(getColor(R.color.bannerblue));
     }
 
     void loadData(){
@@ -210,12 +214,21 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
 
+    public void weeklyAction(View view)
+    {
+        startActivity(new Intent(this, WeekViewActivity.class));
+        finish();
+    }
+
+    public void monthlyAction(View view)
+    {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
     public void newEventAction(View view)
     {
         startActivity(new Intent(this, EventEditActivity.class));
     }
-
-    public void monthlyAction(View view) {finish();}
 
 
 

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cellDayText"
         android:text="1"
-        android:fontFamily="@font/kordotummedium"
+        android:fontFamily="@font/zenkakuregular"
         android:textSize="14sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,14 +26,14 @@
         android:id="@+id/tv_eventCell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/eventblue"
+        android:textColor="#80000000"
         app:layout_constraintTop_toBottomOf="@+id/cellDayText"
         app:layout_constraintEnd_toEndOf="@id/cellDayText"
         android:text="hello"
+        android:textSize="10sp"
         android:layout_marginLeft="3px"
+        android:fontFamily="@font/nexongothicregular"
         android:maxLines="3"
-
-
         />
 
 

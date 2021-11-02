@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInMonthArray;
 import static co.kr.crystalstudio.keepinmind.CalendarUtils.monthYearFromDate;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+
+import org.w3c.dom.Text;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         loadData();
 
 //        getSupportActionBar().setSubtitle(Global.userID);
-        Toast.makeText(this, Global.userID+"님 환영합니다!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, Global.userID+"님 환영합니다!", Toast.LENGTH_SHORT).show();
     }
 
     void loadData(){
@@ -122,13 +126,24 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     protected void onResume() {
         super.onResume();
         Global.activityNum = 0;
+        setMonthView();
+        findViewById(R.id.btn_today).setBackgroundColor(getColor(R.color.bannerblue));
+
     }
 
     public void weeklyAction(View view)
     {
         startActivity(new Intent(this, WeekViewActivity.class));
     }
+
+    public void monthlyAction(View view)
+    {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    public void newEventAction(View view)
+    {
+        startActivity(new Intent(this, EventEditActivity.class));
+    }
 }
-
-
-

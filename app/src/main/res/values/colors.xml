@@ -15,4 +15,13 @@
     <color name="babyblue">#FFD6EAF8 </color>
     <color name="lightpurple">#FFEDE7F6 </color>
     <color name="eventblue">#FF3498DB </color>
+
+
+    <color name="shadowColor">#2E2E2E</color>
+    <color name="selectedIconColor">#29B6F6</color>
+    <color name="countTextColor">#fff</color>
+    <color name="defaultIconColor">#F6F6F6</color>
+    <color name="circleColor">#fff</color>
+    <color name="backgroundBottomColor">#29B6F6</color>
+    <color name="countBackgroundColor">#F45E0B</color>
 </resources>

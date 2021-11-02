@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">KeepInMind</string>
-    <string name="back"><![CDATA[◀]]></string>
-    <string name="forward"><![CDATA[▶]]></string>
+    <string name="back"><![CDATA[«]]></string>
+    <string name="forward"><![CDATA[»]]></string>
     <string name="title_activity_navigation">Navigation</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

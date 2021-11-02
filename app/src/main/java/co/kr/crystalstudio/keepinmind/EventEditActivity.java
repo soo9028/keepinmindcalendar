@@ -4,12 +4,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,6 +30,7 @@ public class EventEditActivity extends AppCompatActivity
     private EditText eventNameET;
     boolean isEdit = false;
     String no;
+
 //    private EditText eventDateET, eventTimeET;
 
 //    private LocalTime time;
@@ -36,6 +40,7 @@ public class EventEditActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_edit);
+
         initWidgets();
         eventNameET = findViewById(R.id.eventNameET);
 
@@ -50,6 +55,14 @@ public class EventEditActivity extends AppCompatActivity
 //        time = LocalTime.now();
 //        eventDateET.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
 //        eventTimeET.setText("Time: " + CalendarUtils.formattedTime(time));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        findViewById(R.id.btn_addevent).setBackgroundColor(getColor(R.color.bannerblue));
+
+
     }
 
     private void initWidgets()
@@ -118,7 +131,21 @@ public class EventEditActivity extends AppCompatActivity
 
     }
 
+    public void weeklyAction(View view)
+    {
+        startActivity(new Intent(this, WeekViewActivity.class));
+    }
 
+    public void monthlyAction(View view)
+    {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void newEventAction(View view)
+    {
+        startActivity(new Intent(this, EventEditActivity.class));
+        finish();
+    }
 
     }
 
