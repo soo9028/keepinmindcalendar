@@ -1,4 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,16 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInMonthArray;
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.monthYearFromDate;
-
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-
-import org.w3c.dom.Text;
+import static co.kr.crystalstudio.keepinmindcalendar.CalendarUtils.daysInMonthArray;
+import static co.kr.crystalstudio.keepinmindcalendar.CalendarUtils.monthYearFromDate;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 import android.content.Context;
 

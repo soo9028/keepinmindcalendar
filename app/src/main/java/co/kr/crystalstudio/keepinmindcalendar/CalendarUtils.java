@@ -1,4 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;

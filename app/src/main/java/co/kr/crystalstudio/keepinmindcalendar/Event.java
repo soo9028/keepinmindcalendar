@@ -1,7 +1,6 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Event

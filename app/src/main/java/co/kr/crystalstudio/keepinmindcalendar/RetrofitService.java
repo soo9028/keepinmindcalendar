@@ -1,6 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
-
-import android.content.ClipData;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 import java.util.ArrayList;
 

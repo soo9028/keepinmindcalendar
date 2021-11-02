@@ -1,4 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +12,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.content.SharedPreferences;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.common.util.Utility;
-import com.kakao.sdk.user.UserApi;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
 

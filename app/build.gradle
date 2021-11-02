@@ -6,7 +6,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "co.kr.crystalstudio.keepinmind"
+        applicationId "co.kr.crystalstudio.keepinmindcalendar"
         minSdk 26
         targetSdk 30
         versionCode 1

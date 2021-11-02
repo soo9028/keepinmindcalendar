@@ -1,4 +1,4 @@
-package co.kr.crystalstudio.keepinmind;
+package co.kr.crystalstudio.keepinmindcalendar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +17,8 @@ import android.widget.Toast;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInMonthArray;
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.daysInWeekArray;
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.monthYearFromDate;
-import static co.kr.crystalstudio.keepinmind.CalendarUtils.selectedDate;
-
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import static co.kr.crystalstudio.keepinmindcalendar.CalendarUtils.daysInWeekArray;
+import static co.kr.crystalstudio.keepinmindcalendar.CalendarUtils.monthYearFromDate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
