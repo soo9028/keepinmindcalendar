@@ -3,6 +3,7 @@ package co.kr.crystalstudio.keepinmindcalendar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -125,11 +126,13 @@ public class EventEditActivity extends AppCompatActivity
     public void weeklyAction(View view)
     {
         startActivity(new Intent(this, WeekViewActivity.class));
+        finish();
     }
 
     public void monthlyAction(View view)
     {
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     public void newEventAction(View view)
